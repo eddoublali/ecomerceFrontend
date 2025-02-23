@@ -1,24 +1,24 @@
-// src/components/layouts/AdminLayout.jsx
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Package, Users, ShoppingCart, Plus } from 'lucide-react';
+import { useAuth } from '../../context/AuthProvider';
 
 const AdminLayout = ({ children }) => {
   const location = useLocation();
-  
   const isActive = (path) => {
     return location.pathname === path;
   };
+  const { logOut } = useAuth();
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white shadow-lg">
+      <div className="w-64 bg-white shadow-lg flex flex-col">
         <div className="p-4 border-b">
           <h2 className="text-xl font-bold">Admin Dashboard</h2>
         </div>
         
-        <nav className="p-4">
+        <nav className="p-4 flex-1">
           <ul className="space-y-2">
             <li>
               <Link
@@ -87,6 +87,16 @@ const AdminLayout = ({ children }) => {
             </li>
           </ul>
         </nav>
+        
+        {/* Logout button container */}
+        <div className="p-4 border-t">
+          <button
+            onClick={logOut}
+            className="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Main Content */}

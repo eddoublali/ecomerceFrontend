@@ -22,82 +22,88 @@ import AdminOrders from "./pages/admin/AdminOrders";
 import AdminProducts from "./pages/admin/AdminProducts";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AddProduct from "./pages/admin/AddProduct";
-
+import PlaceOrder from "./pages/PlaceOrder";
+import OrdersProvider from "./context/OrdersProvider";
+import ThankYou from "./pages/ThankYou";
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname === '/dashboard';
 
   return (
-    <RegisterProvider>
-      <AuthProvider>
-        <div className="app">
-          {!isAdminRoute && <Navbar />}
-          
-          <Routes>
-            {/* Public routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<SignUp />} />
-            <Route path="/product/:id" element={<Products />} />
+    <AuthProvider>
+      <RegisterProvider>
+        <OrdersProvider>
+          <div className="app">
+            {!isAdminRoute && <Navbar />}
+            
+            <Routes>
+              {/* Public routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/product/:id" element={<Products />} />
 
-            {/* Protected user routes */}
-            <Route element={<ProtectedRoute />}>
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/profile" element={<Profile />} />
-            </Route>
+              {/* Protected user routes */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/placeorder" element={<PlaceOrder />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/thankyou" element={<ThankYou />} />
+              </Route>
 
-            {/* Protected admin routes - with AdminLayout */}
-            <Route element={<AdminRoute />}>
-              <Route
-                path="/dashboard"
-                element={
-                  <AdminLayout>
-                    <Dashboard />
-                  </AdminLayout>
-                }
-              />
-              <Route
-                path="/admin/orders"
-                element={
-                  <AdminLayout>
-                    <AdminOrders />
-                  </AdminLayout>
-                }
-              />
-              <Route
-                path="/admin/products"
-                element={
-                  <AdminLayout>
-                    <AdminProducts />
-                  </AdminLayout>
-                }
-              />
-              <Route
-                path="/admin/products/add"
-                element={
-                  <AdminLayout>
-                    <AddProduct />
-                  </AdminLayout>
-                }
-              />
-              <Route
-                path="/admin/users"
-                element={
-                  <AdminLayout>
-                    <AdminUsers />
-                  </AdminLayout>
-                }
-              />
-            </Route>
-          </Routes>
-          
-          {!isAdminRoute && <Footer />}
-        </div>
-      </AuthProvider>
-    </RegisterProvider>
+              {/* Protected admin routes - with AdminLayout */}
+              <Route element={<AdminRoute />}>
+                <Route
+                  path="/dashboard"
+                  element={
+                    <AdminLayout>
+                      <Dashboard />
+                    </AdminLayout>
+                  }
+                />
+                <Route
+                  path="/admin/orders"
+                  element={
+                    <AdminLayout>
+                      <AdminOrders />
+                    </AdminLayout>
+                  }
+                />
+                <Route
+                  path="/admin/products"
+                  element={
+                    <AdminLayout>
+                      <AdminProducts />
+                    </AdminLayout>
+                  }
+                />
+                <Route
+                  path="/admin/products/add"
+                  element={
+                    <AdminLayout>
+                      <AddProduct />
+                    </AdminLayout>
+                  }
+                />
+                <Route
+                  path="/admin/users"
+                  element={
+                    <AdminLayout>
+                      <AdminUsers />
+                    </AdminLayout>
+                  }
+                />
+              </Route>
+            </Routes>
+            
+            {!isAdminRoute && <Footer />}
+          </div>
+        </OrdersProvider>
+      </RegisterProvider>
+    </AuthProvider>
   );
 }
 

@@ -32,41 +32,68 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-20 w-full">  
-      <div className="flex items-center gap-2">
-        <p className="text-3xl font-medium mb-5 prata-regular">Login</p>  
-        <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
-      </div>
-      <form onSubmit={onSubmitHandler} className="w-full sm:w-1/3 flex flex-col items-center md:gap-5 mx-auto pl-3">
-          <input 
-            type="email" 
-            name="email"
-            value={input.email}
-            placeholder="Enter your Email"  
-            className="w-full sm:flex-1 outline-none border p-3 border-slate-950" 
-            required  
-            onChange={handleInput}
-          />
-          <br />
-          <input 
-            type="password" 
-            name="password"
-            value={input.password}
-            placeholder="Enter your Password"  
-            className="w-full sm:flex-1 outline-none border p-3 border-slate-950" 
-            required  
-            onChange={handleInput}
-          />
-          <div className="flex gap-10 md:gap-28 items-center mt-2 mb-4 md:mb-0 md:mt-0">
-            <p className="cursor-pointer">Forgot your password?</p>
-            <Link to='/register'>
-              <p className="cursor-pointer">Create account</p>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+        <div>
+          <h2 className="text-center text-3xl font-bold text-gray-900">
+            Sign in to your account
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Or{' '}
+            <Link to="/register" className="font-medium text-blue-500 hover:text-blue-600">
+              create a new account
             </Link>
+          </p>
+        </div>
+        
+        <form onSubmit={onSubmitHandler} className="mt-8 space-y-6">
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="email" className="sr-only">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={input.email}
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Email address"
+                onChange={handleInput}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={input.password}
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                placeholder="Password"
+                onChange={handleInput}
+              />
+            </div>
           </div>
-          <button type="submit" className="bg-black text-x text-white px-10 py-4 mt-2">
-            Sign In
-          </button>
-      </form>
+
+          <div className="flex items-center justify-between">
+            <div className="text-sm">
+              <a href="#" className="font-medium text-blue-500 hover:text-blue-600">
+                Forgot your password?
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Sign in
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ const DashboardCard = ({ title, value, icon: Icon, color }) => (
 );
 
 const Dashboard = () => {
-  const { user, loading, isAuthenticated, logOut } = useAuth();
+  const { user, loading, isAuthenticated} = useAuth();
   const navigate = useNavigate();
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -70,18 +70,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold">Welcome back, {user.username}!</h1>
-          <p className="text-gray-600 mt-1">{user.email}</p>
-        </div>
-        <button
-          onClick={logOut}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-        >
-          Logout
-        </button>
-      </div>
+     
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -109,6 +98,7 @@ const Dashboard = () => {
           icon={DollarSign}
           color="bg-yellow-500"
         />
+        
       </div>
 
       {/* Recent Activity */}
@@ -153,6 +143,7 @@ const Dashboard = () => {
             Manage Users
           </button>
         </div>
+        
       </div>
     </div>
   );

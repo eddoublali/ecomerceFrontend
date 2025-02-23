@@ -19,31 +19,29 @@ const AuthProvider = ({ children }) => {
       });
   
       const res = await response.json();
-      console.log('Login response:', res);
   
       if (!response.ok) {
         throw new Error(res.message || 'Login failed');
       }
   
-      // Store user data from login response
       const userData = {
         _id: res._id,
         email: res.email,
         username: res.username,
+        name: res.name, // Added name field
+        address: res.address, // Added address field
         isAdmin: res.isAdmin || false,
         createdAt: res.createdAt
       };
   
-      // Set user data and token
       setUser(userData);
       setToken(res.token);
       localStorage.setItem("site", res.token);
   
-      // Route based on user role
       if (userData.isAdmin) {
         navigate("/dashboard");
       } else {
-        navigate("/"); // Regular users go to the home page
+        navigate("/");
       }
       
     } catch (err) {
@@ -51,7 +49,7 @@ const AuthProvider = ({ children }) => {
       setUser(null);
       setToken("");
       localStorage.removeItem("site");
-      alert(err.message || 'Failed to login. Please try again.');
+      throw err; // Let the component handle the error
     }
   };
 
