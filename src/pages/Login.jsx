@@ -33,7 +33,18 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+   
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+      <div className='flex flex-col'>
+     <div>
+        <h4>email admin : test1@gmail.com</h4>
+        <h4>password admin : 123456</h4>
+      </div>
+      <div>
+        <h4>norml user : zakarya@gmail.com</h4>
+        <h4>password admin : zakarya</h4>
+      </div>
+     </div>
         <div>
           <h2 className="text-center text-3xl font-bold text-gray-900">
             Sign in to your account
