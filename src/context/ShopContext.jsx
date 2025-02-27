@@ -44,7 +44,7 @@ const ShopContextProvider = (props) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/products", {
+            const response = await fetch("https://fastshipbackend.onrender.com/api/products", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

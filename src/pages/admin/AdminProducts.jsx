@@ -29,7 +29,7 @@ const AdminProducts = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/products");
+        const response = await fetch("https://fastshipbackend.onrender.com/api/products");
         const data = await response.json();
         
         if (!response.ok) {
@@ -48,7 +48,7 @@ const AdminProducts = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/categories");
+        const response = await fetch("https://fastshipbackend.onrender.com/api/categories");
         const data = await response.json();
         
         if (!response.ok) {
@@ -114,7 +114,7 @@ const AdminProducts = () => {
         throw new Error("Authentication required");
       }
 
-      const response = await fetch(`http://localhost:3000/api/products/${selectedProduct._id}`, {
+      const response = await fetch(`https://fastshipbackend.onrender.com/api/products/${selectedProduct._id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
