@@ -32,7 +32,7 @@ const AddProduct = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/categories");
+        const response = await fetch("https://fastshipbackend.onrender.com/api/categories");
         const data = await response.json();
         
         if (!response.ok) {
@@ -104,7 +104,7 @@ const AddProduct = () => {
         date: new Date().toISOString()
       };
 
-      const response = await fetch("http://localhost:3000/api/products", {
+      const response = await fetch("https://fastshipbackend.onrender.com/api/products", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
