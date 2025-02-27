@@ -18,7 +18,7 @@ const ShopContextProvider = (props) => {
                         ? { ...item, quantity: item.quantity + 1 } 
                         : item
                 );
-            } else {
+            } else{
                 return [...prevCart, { ...product, selectedSize, quantity: 1 }];
             }
         });
