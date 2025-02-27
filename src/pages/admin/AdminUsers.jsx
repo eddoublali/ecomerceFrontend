@@ -13,7 +13,7 @@ const AdminUsers = () => {
     const fetchUsers = async () => {
       try {
         const token = localStorage.getItem('site');
-        const response = await axios.get('http://localhost:3000/api/users', {
+        const response = await axios.get('https://fastshipbackend.onrender.com/api/users', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUsers(response.data);

@@ -92,7 +92,7 @@ const AdminOrders = () => {
         throw new Error("Authentication required");
       }
 
-      const response = await fetch(`http://localhost:3000/api/orders/${orderId}`, {
+      const response = await fetch(`https://fastshipbackend.onrender.com/api/orders/${orderId}`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`,
