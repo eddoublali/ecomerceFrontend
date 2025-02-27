@@ -56,7 +56,7 @@ export default function Orders() {
                 <div key={item._id} className="flex gap-4 py-4 border-b last:border-b-0">
                   <div className="w-20 h-20 rounded-md overflow-hidden">
                     <img 
-                      src={`http://localhost:3000${item.image[0]}`}
+                      src={`https://fastshipbackend.onrender.com${item.image[0]}`}
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />

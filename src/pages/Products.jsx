@@ -38,7 +38,7 @@ const Product = () => {
           {/* Product Images */}
           <div className="aspect-square rounded-lg overflow-hidden">
             <img 
-              src={product.image[0] ? `http://localhost:3000${product.image[0]}` : ''}
+              src={product.image[0] ? `https://fastshipbackend.onrender.com${product.image[0]}` : ''}
               alt={product.name}
               className="w-full h-full object-cover"
             />

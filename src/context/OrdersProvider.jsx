@@ -21,7 +21,7 @@ const OrdersProvider = ({ children }) => {
         throw new Error('Authentication required');
       }
 
-      const response = await fetch("http://localhost:3000/api/orders", {
+      const response = await fetch("https://fastshipbackend.onrender.com/api/orders", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${storedToken}`,
@@ -60,8 +60,8 @@ const OrdersProvider = ({ children }) => {
 
       // Use different endpoints for admin and regular users
       const endpoint = user?.isAdmin 
-        ? "http://localhost:3000/api/orders"
-        : "http://localhost:3000/api/orders/user";
+        ? "https://fastshipbackend.onrender.com/api/orders"
+        : "https://fastshipbackend.onrender.com/api/orders/user";
 
       const response = await fetch(endpoint, {
         headers: {
@@ -97,7 +97,7 @@ const OrdersProvider = ({ children }) => {
         throw new Error('Authentication required');
       }
 
-      const response = await fetch(`http://localhost:3000/api/orders/${orderId}`, {
+      const response = await fetch(`https://fastshipbackend.onrender.com/api/orders/${orderId}`, {
         headers: {
           "Authorization": `Bearer ${storedToken}`,
         },
